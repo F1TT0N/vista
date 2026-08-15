@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vista Pictures VR — Privacy Policy</title>
+<link rel="icon" href="img/logo.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-0: #0C0718;
+    --line: #2E1F52;
+    --text: #EFEAFB;
+    --muted: #A99CC4;
+    --accent: #9B6BFF;
+    --accent-2: #F15BB5;
+    --accent-glow: rgba(155, 107, 255, 0.45);
+    --radius: 14px;
+  }
+
+  html, body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(900px 600px at 15% -10%, rgba(155, 107, 255, 0.20), transparent 60%),
+      radial-gradient(800px 500px at 95% 10%, rgba(241, 91, 181, 0.10), transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 880px; margin: 0 auto;
+    padding: 56px 24px 90px;
+  }
+
+  .logo {
+    font-weight: 800; letter-spacing: 0.18em; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--text); text-decoration: none; margin-bottom: 40px;
+  }
+  .logo-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 14px var(--accent-glow);
+  }
+
+  h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -0.01em; }
+  .updated { color: var(--muted); font-size: 14px; margin-top: 6px; margin-bottom: 34px; }
+
+  h2 {
+    font-size: 20px; font-weight: 700;
+    margin: 44px 0 12px; padding-left: 14px;
+    border-left: 3px solid var(--accent);
+  }
+
+  p { margin-bottom: 14px; color: var(--muted); }
+  p strong, li strong { color: var(--text); }
+  em { color: var(--text); font-style: italic; }
+
+  a { color: var(--accent-2); text-decoration: none; border-bottom: 1px dotted var(--accent-2); }
+  a:hover { color: var(--text); border-bottom-color: var(--text); }
+
+  code {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.92em; color: var(--accent-2);
+    background: rgba(124, 92, 255, 0.10);
+    border: 1px solid var(--line);
+    border-radius: 6px; padding: 1px 6px;
+  }
+
+  ul { margin: 0 0 18px 22px; }
+  li { margin-bottom: 10px; color: var(--muted); }
+
+  .summary {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-2);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(124, 92, 255, 0.10), rgba(255, 255, 255, 0.01));
+    padding: 24px 26px;
+    margin-bottom: 10px;
+  }
+  .summary p:last-child { margin-bottom: 0; }
+
+  table { border-collapse: collapse; width: 100%; margin-top: 14px; font-size: 15px; }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 12px 14px; text-align: left; vertical-align: top;
+    color: var(--muted);
+  }
+  th { background: rgba(124, 92, 255, 0.10); color: var(--text); font-weight: 700; }
+  td strong { color: var(--text); }
+
+  .contact-box {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 22px 26px; margin-top: 16px;
+  }
+
+  footer {
+    margin-top: 60px; padding-top: 26px;
+    border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 14px;
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a href="index.html" class="logo">
+    <img src="img/logo.png" alt="" style="width:30px;height:30px;border-radius:8px">VISTA PICTURES VR</a>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: 14 August 2026</p>
+
+  <div class="summary">
+    <p><strong>The short version.</strong> Vista Pictures VR does not collect, transmit or sell
+    your personal data. It has no accounts, no analytics and no advertising. Your photos,
+    models and HDRI maps stay on your headset unless you deliberately connect a cloud account
+    or a network share, and even then they travel only between your device and the service you
+    chose.</p>
+  </div>
+
+  <h2>What the app stores on your device</h2>
+  <p>Everything the app keeps lives in its own private storage on the headset and is removed
+  when you uninstall it:</p>
+  <ul>
+    <li><strong>Thumbnails.</strong> Small preview images generated from your files so the
+    browser stays responsive. You can delete them at any time in Settings &rarr; Storage &rarr;
+    Clear Thumbnail Cache.</li>
+    <li><strong>Preferences.</strong> Your sort order, theme, viewing settings and bookmarks.</li>
+    <li><strong>Cloud sign-in tokens.</strong> If you connect Dropbox, Google Drive or OneDrive,
+    the access token issued by that service is stored on the device so you do not have to sign
+    in again. It is never sent anywhere except back to that same service.</li>
+    <li><strong>Sample images.</strong> The pictures bundled with the app, unpacked on first
+    use.</li>
+  </ul>
+
+  <h2>Files you open</h2>
+  <p>The app needs permission to read files in order to show them. It reads them to display
+  them and for nothing else. Your files are never uploaded, indexed remotely, scanned for
+  content or shared with us or any third party. We never see them: there is no server behind
+  this app that could.</p>
+
+  <h2>When the app uses the internet</h2>
+  <p>Only when you ask it to, and only in these cases:</p>
+  <ul>
+    <li><strong>Poly Haven.</strong> If you open the in-app search, the app requests the public
+    asset catalogue from <em>polyhaven.com</em> and downloads the files you choose. These
+    requests carry an identifying User-Agent naming this app and its version, so Poly Haven can
+    recognise the traffic. No information about you is sent.</li>
+    <li><strong>Cloud storage.</strong> If you connect an account, the app talks to that
+    provider on your behalf to list and fetch your files.</li>
+    <li><strong>Network shares.</strong> If you add an SMB, FTP or WebDAV location, the app
+    connects to that address on your local network.</li>
+  </ul>
+  <p>If you use none of these, the app makes no network connections at all.</p>
+
+  <h2>Permissions and why they are needed</h2>
+  <ul>
+    <li><strong>All files access.</strong> To browse and open the images, models and HDRI maps
+    stored on your headset. Without it the app has nothing to show.</li>
+    <li><strong>Internet.</strong> Only for the three cases above.</li>
+    <li><strong>USB.</strong> To read a drive you plug in, if you choose to.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>This app is not directed at children under 13 and collects no data from anyone, of any
+  age.</p>
+
+  <h2>Third-party content</h2>
+  <p>Assets downloaded through the in-app search come from Poly Haven and are released under
+  the CC0 public domain dedication. Their use is governed by Poly Haven&rsquo;s terms, not
+  ours.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the date at the top of this page changes with it. Because the app
+  collects nothing, we do not expect changes that would affect you.</p>
+
+  <div class="contact-box">
+    <h2>Contact</h2>
+    <p>Questions about privacy, or anything else about the app:</p>
+    <p><strong>psopala93@gmail.com</strong></p>
+  </div>
+
+</div>
+</body>
+</html>
