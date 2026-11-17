@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blender add-on | Vista Pictures VR</title>
+<meta name="description" content="Free Blender add-on: send the scene you are working on to Vista Pictures VR on Meta Quest and look at it in VR, with materials, lights, cameras, animation and the World sky.">
+<link rel="icon" href="../img/logo.png">
+
+<meta property="og:title" content="Vista Pictures VR Blender add-on">
+<meta property="og:description" content="Send your Blender scene to Meta Quest in one click. Free, for Blender 4.2 and newer.">
+<meta property="og:image" content="../img/hero.jpg">
+<meta property="og:type" content="website">
+
+<style>
+:root{
+  --bg:#0C0718;--bg-lift:#150C2B;--card:#1A0F33;--line:#2E1F52;
+  --primary:#9B6BFF;--primary-soft:#B695FF;--amber:#F5A623;--pink:#F15BB5;
+  --text:#EFEAFB;--muted:#A99CC4;--radius:16px;--wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--primary-soft);text-decoration:none}
+a:hover{color:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(12,7,24,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:14px;height:66px}
+.nav-in img{width:34px;height:34px;border-radius:9px}
+.brand{font-weight:700;letter-spacing:-.2px;font-size:17px;color:var(--text)}
+.nav-links{margin-left:auto;display:flex;gap:26px;font-size:15px}
+.nav-links a{color:var(--muted)}
+@media(max-width:640px){.nav-links{display:none}}
+
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  background:radial-gradient(110% 90% at 50% 0%, rgba(245,166,35,.16) 0%, rgba(155,107,255,.14) 40%, transparent 70%)}
+.hero-in{position:relative;padding:96px 0 84px;text-align:center}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--primary-soft);border:1px solid var(--line);background:rgba(155,107,255,.09);
+  padding:7px 15px;border-radius:999px;margin-bottom:26px}
+h1{margin:0 0 20px;font-size:clamp(32px,5.6vw,56px);line-height:1.08;letter-spacing:-1.3px;font-weight:800}
+h1 .grad{background:linear-gradient(100deg,var(--amber) 0%,var(--pink) 50%,var(--primary) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:660px;margin:0 auto;font-size:clamp(16px,2.2vw,19px);color:var(--muted)}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-block;padding:13px 26px;border-radius:11px;font-weight:650;font-size:15.5px;border:1px solid transparent}
+.btn-p{background:var(--primary);color:#150733;box-shadow:0 8px 26px rgba(155,107,255,.3)}
+.btn-p:hover{background:var(--primary-soft);color:#150733}
+.btn-g{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-g:hover{border-color:var(--primary);color:#fff}
+.meta{margin-top:18px;color:var(--muted);font-size:14px}
+
+section{padding:76px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 44px}
+h2{margin:0 0 14px;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.7px;font-weight:750}
+.sec-head p{margin:0;color:var(--muted);font-size:17px}
+
+.cards{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:940px){.cards{grid-template-columns:repeat(2,1fr)}}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+@media(max-width:620px){.cards,.cards.two{grid-template-columns:1fr}}
+.cards>*{min-width:0}
+.card{background:linear-gradient(180deg,var(--card) 0%,var(--bg-lift) 100%);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px 24px}
+.card .ico{width:42px;height:42px;border-radius:11px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;
+  font-size:21px;background:rgba(155,107,255,.13);border:1px solid var(--line)}
+.card h3{margin:0 0 8px;font-size:18px;letter-spacing:-.3px}
+.card p{margin:0;color:var(--muted);font-size:15.2px}
+
+.alt{background:var(--bg-lift);border-block:1px solid var(--line)}
+.steps{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+.step .n{font-size:13px;letter-spacing:1.3px;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:6px}
+.step h3{margin:0 0 10px;font-size:19px}
+.step ol{margin:0;padding-left:20px;color:var(--muted);font-size:15.2px}
+.step li{margin:6px 0}
+.step b{color:var(--text)}
+code,.url{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;
+  background:rgba(155,107,255,.12);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--text);word-break:break-all}
+.url{display:block;padding:10px 12px;margin:10px 0 4px;user-select:all}
+
+.faq{max-width:820px;margin:0 auto}
+details{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:650}
+details p{color:var(--muted);margin:10px 0 0;font-size:15.3px}
+
+footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-size:14.5px}
+.foot{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.foot .links{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="../"><img src="../img/logo.png" alt=""></a>
+    <a class="brand" href="../">Vista Pictures VR</a>
+    <div class="nav-links">
+      <a href="#features">What it sends</a>
+      <a href="#install">Install</a>
+      <a href="#faq">Questions</a>
+      <a href="../privacy-policy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <span class="eyebrow">Free Blender add-on</span>
+    <h1>From Blender to your headset,<br><span class="grad">in one click.</span></h1>
+    <p class="lead">
+      Send the scene you are working on to Vista Pictures VR on Meta Quest and walk around it
+      at real size, with its materials, lights, cameras, animation and World sky. Change
+      something, send again, and the headset swaps it in where you stand.
+    </p>
+    <div class="cta">
+      <a class="btn btn-p" href="./vista_pictures_bridge-1.1.0.zip?repository=.%2Findex.json&amp;blender_version_min=4.2.0" download>Download add-on 1.1.0</a>
+      <a class="btn btn-g" href="#install">How to install</a>
+    </div>
+    <p class="meta">Blender 4.2 or newer · Windows, macOS, Linux · 47 KB · GPL-3.0</p>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What it sends</h2>
+      <p>Everything the headset needs to show the scene the way Blender shows it, prepared for
+         you, so there is nothing to export by hand.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ico">🎨</div><h3>Materials, baked</h3>
+        <p>Procedural and node materials are baked to textures on a copy of the scene, so they look
+        right in VR. Your file is never touched.</p></div>
+      <div class="card"><div class="ico">💡</div><h3>Lights and sky</h3>
+        <p>Sun, point, spot and area lamps with their colour and strength, plus the World HDRI,
+        turned and as bright as you set it in Blender.</p></div>
+      <div class="card"><div class="ico">🎥</div><h3>Cameras as viewpoints</h3>
+        <p>Every camera becomes a place to stand. Step from one to the next and look around at
+        real scale.</p></div>
+      <div class="card"><div class="ico">🎞️</div><h3>Animation and shape keys</h3>
+        <p>Plays as it does in Blender. Turn on Sync timeline and scrubbing in Blender moves the
+        headset with you.</p></div>
+      <div class="card"><div class="ico">🔀</div><h3>Variants</h3>
+        <p>Put options in collections, such as oak or walnut or day and night, and flip between them in the
+        headset.</p></div>
+      <div class="card"><div class="ico">🖼️</div><h3>Renders</h3>
+        <p>Send the finished render too. Panoramic renders open all around you as a 360° image.</p></div>
+      <div class="card"><div class="ico">🔍</div><h3>Finds the headset</h3>
+        <p>No IP address to type. Press Find and every Quest on your Wi-Fi with Blender Bridge started
+        shows up. Send to one or to several.</p></div>
+      <div class="card"><div class="ico">✅</div><h3>Checks first</h3>
+        <p>Before sending, Check Scene tells you what will arrive differently: too many triangles,
+        how much texture memory, which materials get baked, a tilted sky.</p></div>
+      <div class="card"><div class="ico">🗂️</div><h3>Keeps versions tidy</h3>
+        <p>See what you have sent to the headset, add notes, show an older version again or delete
+        the ones you no longer need.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Install and connect</h2>
+      <p>Three minutes, once. After that it is one button.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">Step 1</div>
+        <h3>Install in Blender</h3>
+        <ol>
+          <li><b>Download</b> the add-on above.</li>
+          <li>In Blender: <b>Edit › Preferences › Get Extensions</b>.</li>
+          <li>Top-right <b>⌄</b> menu › <b>Install from Disk…</b> and pick the file.</li>
+        </ol>
+        <p style="color:var(--muted);font-size:14.5px;margin:12px 0 0">Or simply drag the download
+          button from this page into Blender.</p>
+      </div>
+      <div class="step">
+        <div class="n">Step 2</div>
+        <h3>Open Vista on the Quest</h3>
+        <ol>
+          <li>Put the headset on the <b>same Wi-Fi</b> as the computer.</li>
+          <li>In Vista Pictures VR, go to <b>Home</b>.</li>
+          <li>Under <b>Blender Bridge</b> press <b>START</b>.</li>
+        </ol>
+      </div>
+      <div class="step">
+        <div class="n">Step 3</div>
+        <h3>Send</h3>
+        <ol>
+          <li>In Blender's 3D view press <b>N</b> and open the <b>Vista</b> tab.</li>
+          <li>Press <b>Find</b> and your headset appears in the list.</li>
+          <li>Press <b>Send to Quest</b>, then <b>Open in VR</b> in the headset.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="cards two" style="margin-top:18px">
+      <div class="card">
+        <div class="ico">🔄</div>
+        <h3>Automatic updates</h3>
+        <p>Let Blender keep the add-on up to date: <b style="color:var(--text)">Edit › Preferences › Get
+          Extensions › Repositories › + › Add Remote Repository</b>, and paste:</p>
+        <span class="url">https://f1tt0n.github.io/vista/blender/index.json</span>
+      </div>
+      <div class="card">
+        <div class="ico">🥽</div>
+        <h3>Get it from the headset</h3>
+        <p>The add-on is also inside Vista. When the computer and the Quest are on the same
+          Wi-Fi network, press <b style="color:var(--text)">START</b> under Blender Bridge, open
+          the address the headset shows in your PC browser and click
+          <b style="color:var(--text)">Blender add-on</b> in the top right corner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Questions</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Find does not show my headset.</summary>
+        <p>Check that the Quest and the computer are on the same Wi-Fi network and that you pressed
+          START under Blender Bridge. Some routers keep guest networks apart, and some firewalls block
+          the search. In that case press <b>+</b> and type the address the headset shows, such as
+          <code>http://192.168.1.20:8080</code>.</p>
+      </details>
+      <details>
+        <summary>Does my scene go through the internet?</summary>
+        <p>No. Blender sends it straight to the headset over your own network. Nothing is uploaded
+          anywhere, and there is no account. See the <a href="../privacy-policy.html">privacy policy</a>.</p>
+      </details>
+      <details>
+        <summary>Does it change my .blend file?</summary>
+        <p>No. Exporting and baking happen on a temporary copy of the scene in the background, while
+          you keep working.</p>
+      </details>
+      <details>
+        <summary>I set a password on the headset.</summary>
+        <p>Open the <b>Password</b> panel under the Vista tab in Blender and enter the same user name
+          and password.</p>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <p>The add-on is free and open source (GPL-3.0). It needs Vista Pictures VR on your Meta Quest.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <img src="../img/logo.png" alt="" style="width:30px;height:30px;border-radius:8px">
+    <span>Vista Pictures VR by Anwar Studio Official</span>
+    <div class="links">
+      <a href="../">Vista Pictures VR</a>
+      <a href="../privacy-policy.html">Privacy policy</a>
+      <a href="./index.json">Extension repository</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

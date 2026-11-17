@@ -60,6 +60,7 @@
     margin: 44px 0 12px; padding-left: 14px;
     border-left: 3px solid var(--accent);
   }
+  h3 { font-size: 17px; font-weight: 700; margin: 28px 0 10px; }
 
   p { margin-bottom: 14px; color: var(--muted); }
   p strong, li strong { color: var(--text); }
@@ -120,7 +121,7 @@
     <img src="img/logo.png" alt="" style="width:30px;height:30px;border-radius:8px">VISTA PICTURES VR</a>
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 15 August 2026 &middot; Anwar Studio Official</p>
+  <p class="updated">Last updated: 16 November 2026 &middot; Anwar Studio Official</p>
 
   <div class="summary">
     <p><strong>The short version.</strong> Vista Pictures VR has no servers. We do not collect,
@@ -180,9 +181,10 @@
   <h2>4. Files on your device</h2>
   <p>Vista Pictures VR requests broad storage access because that is what a file viewer
   <em>is</em>: it has to see your pictures, models and maps in order to show them. It reads files
-  only when you ask it to, and it writes only in two cases &mdash; downloads you start yourself,
-  and its own cache. It never scans your files for content, never indexes them anywhere but on the
-  device, and never uploads them anywhere.</p>
+  only when you ask it to, and it writes only in three cases &mdash; downloads you start yourself,
+  files you send to the headset from your own computer (see <em>Receiving files from your
+  computer</em> below), and its own cache. It never scans your files for content, never indexes
+  them anywhere but on the device, and never uploads them anywhere.</p>
 
   <h2>5. Network connections</h2>
   <p>The app connects only to addresses you enter yourself &mdash; your NAS, your PC, your server.
@@ -190,6 +192,25 @@
   plain HTTP) are unencrypted by design; that is a property of the protocol and of the server you
   chose, not of this app. Use SFTP, SMB, or WebDAV over HTTPS if you need the connection itself
   protected.</p>
+
+  <h3>Receiving files from your computer</h3>
+  <p>The <strong>From PC</strong> screen can turn the headset into a small file server on your
+  own local network, so that a web browser on your computer &mdash; or the free
+  <em>Vista Pictures VR Bridge</em> add-on for Blender &mdash; can send pictures, models and
+  scenes to it. It is <strong>off until you press Start Server</strong> and stops when you press
+  Stop Server or close the app.</p>
+  <ul>
+    <li>While it runs, devices on the same local network can send files to the headset, and can
+        list, download and delete files in the folder it serves. Scenes sent from Blender are
+        confined to <code>Download/Vista Pictures VR/Blender</code>. You can require a password.</li>
+    <li>While it runs, the headset answers a &ldquo;find headsets&rdquo; query from the Blender
+        add-on with its model name and the address of that server. It answers only when asked,
+        only on the local network, and never announces itself.</li>
+    <li>Everything travels directly between your computer and your headset. Nothing passes
+        through us or through any server on the internet, and we never see it.</li>
+    <li>The connection is plain HTTP inside your network, like the protocols above: use it on a
+        network you trust, and set a password on a shared one.</li>
+  </ul>
 
   <h2>6. Google Drive</h2>
   <p>If you connect Google Drive, the app uses the <code>drive.file</code> scope. This is the
